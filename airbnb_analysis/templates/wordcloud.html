@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+
+{% block content %}
+<form action='get'>
+
+        <select name="city">
+            <option value="new_york">New York City</option>
+            <option value="boston">Boston City</option>
+            <option value="seattle">Seattle</option>
+        </select>
+        <select name="room type">
+            <option value="hotel_room">Hotel Room</option>
+            <option value="private_room">Private Room</option>
+            <option value="entire_home">Entire Home</option>
+        </select>
+        <input type="submit">
+</form>
+{{ data | safe }}
+{% endblock %}

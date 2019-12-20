@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+
+{% block content %}
+<body class="w3-content" style="max-width:1300px">
+
+<!-- First Grid: Logo & About -->
+<div class="w3-row">
+  <div class="w3-half w3-black w3-container w3-center" style="height:700px">
+    <div class="w3-padding-64">
+      <h1>I want to earn more money</h1>
+    </div>
+    <div class="w3-padding-64">
+      <a href="{% url 'wordmap' %}" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Important Words</a>
+      <a href="{% url 'prediction' %}" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Get An Estimation</a>
+    </div>
+  </div>
+  <div class="w3-half w3-blue-grey w3-container" style="height:700px">
+    <div class="w3-padding-64 w3-center">
+      <h1>I want to get market info</h1>
+        </div>
+       <div class="w3-padding-64">
+      <a href="{% url 'analysis' %}" class="w3-button w3-blue-grey w3-block w3-hover-black w3-padding-16">Price Analysis</a>
+      <a href="{% url 'map' %}" class="w3-button w3-blue-grey w3-block w3-hover-black w3-padding-16">Neighborhood Insights</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+
+{% block content %}
+
+
+    <form action='get'>
+        <p> Your proposed name here:
+        <textarea name="name" style="width:300px; height:50px;">
+
+        </textarea>
+        </p>
+        <p> Address:
+        <textarea name="address" style="width:300px; height:50px;">
+        </textarea>
+        </p>
+        <p>
+            Price in dollars:
+        <textarea name="price" style="width:100px; height:50px;">
+
+        </textarea></p>
+        <p> Minimum nights required for booking:
+        <textarea name="min_nights" style="width:100px; height:50px;">
+
+        </textarea></p>
+        <p> Maximum nights required for booking:
+        <textarea name="max_nights" style="width:100px; height:50px;">
+
+        </textarea></p>
+        <p> Number of people that you can accommodate:
+        <textarea name="person_capacity" style="width:100px; height:50px;">
+
+        </textarea></p>
+        <p>
+            <select name='room_type_category'>
+                <option value="0">Entire home/apt</option>
+                <option value="1">Private room</option>
+                <option value="2">Shared room</option>
+                <option value="3">Hotel room</option>
+            </select></p>
+        <p>
+            <select name="bedrooms">
+                <option value="0">1 room</option>
+                <option value="1">2 rooms</option>
+                <option value="2">3 rooms</option>
+                <option value="3">4+ rooms</option>
+            </select></p>
+        <p>
+            <select name="bathrooms">
+                <option value="0">1 bath</option>
+                <option value="1">2 baths</option>
+                <option value="2">3 baths</option>
+                <option value="3">4+ baths</option>
+            </select></p>
+        <p>
+            <select name="is_superhost">
+                <option value="0">not a superhost</option>
+                <option value="1">superhost</option>
+            </select></p>
+        <p>
+            <select name='can_instant_book'>
+                <option value="0">not allow instant booking</option>
+                <option value="1">allow instant booking</option>
+            </select></p>
+
+        <input type="submit">
+    </form>
+
+
+    <div>
+        {{ result }}
+
+    </div>
+
+{% endblock %}

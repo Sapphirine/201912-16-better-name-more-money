@@ -1,0 +1,103 @@
+body {
+	/*background-color: rgb(224, 185, 224); */
+	text-align: center;
+	 /*color: yellowgreen; */
+	background-image: url("../images/pic5.jpg");
+	background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 800px;
+}
+
+#brand {
+	font-size: 30px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+	height: 80%;
+}
+
+.jumbotron {
+	opacity: 0.8;
+}
+
+#home-container {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+ul.nav.navbar-nav.navbar-right {
+	font-size:18px;
+}
+
+.star-ratings {
+	/*display: inline;*/
+	line-height: 1;
+	cursor: default;
+	unicode-bidi: bidi-override;
+	color: #c5c5c5;
+	font-size: 25px;
+	height: 25px;
+	width: 125px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+	text-shadow: 0px 1px 0 #a2a2a2;
+}
+
+.star-ratings.top {
+	color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.star-ratings.bottom {
+	padding: 0;
+    display: block;
+	z-index: 0;
+	position: absolute;
+	top: 0;
+    left: 0;
+}
+
+
+/*.four-cols {
+    margin: 0;
+    height: 100px;
+    width: 100%;
+    position: relative;
+}*/
+
+
+/*.cols-left{
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    float: left !important;
+    width: 25% !important;
+}
+Bootstrap is so broken.
+*/
+
+/*.user-rating{
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}*/
+
+
+
+/*.star-ratings.top span {
+	margin: 0;
+	padding: 0;
+}*/

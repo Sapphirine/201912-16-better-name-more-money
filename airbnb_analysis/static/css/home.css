@@ -1,0 +1,62 @@
+body {background:#7cbac1; margin: 0;}
+
+a:hover {
+    background-color: yellow;
+}
+
+/* Vertical Tabs */
+ .vertical-tabs{
+    font-size:15px;
+    padding:10px;
+    color:#000
+}
+ .vertical-tabs .nav-tabs .nav-link{
+    border-radius: 0;
+    background:#c10101;
+    text-align:center;
+    font-size: 16px;
+    border:1px solid #424242;
+    color:#fff;
+    height:40px;
+    width: 120px;
+}
+ .vertical-tabs .nav-tabs .nav-link.active{
+    background-color:#700000!important;
+    color:#fff;
+}
+ .vertical-tabs .tab-content>.active{
+    background:#fff;
+    display:block;
+}
+ .vertical-tabs .nav.nav-tabs{
+    border-bottom:0;
+    border-right:3px solid #000;
+    display:block;
+    float:left;
+    margin-right:20px;
+    padding-right:15px;
+}
+ .vertical-tabs .sv-tab-panel{
+    background:#fff;
+    height:274px;
+    padding-top:10px;
+}
+@media only screen and (max-width: 420px){
+  .titulo{font-size: 22px}
+}
+@media only screen and (max-width: 325px){
+  .vertical-tabs{ padding:8px;}
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color:#fff;
+    font-size: 9px;
+}
+
+
+
+
+
