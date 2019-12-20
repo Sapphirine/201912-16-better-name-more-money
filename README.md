@@ -13,8 +13,10 @@ Our project explores the importance of listing name and builds a web application
 
 
 ## Repo Structure:
-
-
+- `airbnb_scrape` contains the Web Crawler App we developed.
+- `airbnb_analysis` contains the Django App we developed.
+- `exploratory analysis` contains code for exploratory analysis.
+- `modeling` contains code for predictive model experiement.
 
 ## How to use locally:
 
@@ -26,6 +28,20 @@ Our project explores the importance of listing name and builds a web application
 
 ## URL:
 hw0-252420.appspot.com
+
+## Individual Contribution
+The code developed by Qianhui and Duanyue are marked with UIN. The codes are developed by Zihe otherwise. 
+
+## Reference
+
+[1] R. Martinez, A. Carrington, T. Kuo, L. Tarhuni, and N. Abdel-Motaal. The impact of an airbnb host’s list-ing  description ‘sentiment’ and length on occupancy rates.https://arxiv.org/pdf/1711.09196.pdf
+
+[2] J. Pennington, R. Socher, and C. Manning. Glove: Globalvectors for word representation, 2014
+
+[3] https://towardsdatascience.com/creating-word-clouds-with-python-f2077c8de5cc
+
+[4] https://github.com/kailu3/airbnb-scraper
+
 
 
 
