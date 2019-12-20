@@ -1,0 +1,169 @@
+---
+title: "Big Data Final EDA"
+author: "Duanyue Yun"
+date: "12/11/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,message=FALSE}
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(stringr)
+library(ggthemes)
+```
+
+```{r,message=FALSE}
+listings <- read_csv("new_york.csv")
+colnames(listings)
+```
+
+```{r}
+listings <- listings %>%
+  mutate(reviews_per_month = reviews_count / (abs(months)+1)) 
+
+listings %>%
+  arrange(months)
+```
+
+```{r, eval=FALSE}
+# number of NAs by column
+colSums(is.na(listings)) %>%
+  sort(decreasing = TRUE)
+```
+
+
+```{r, message=FALSE}
+listings_v1 <- listings %>% filter(!is.na(reviews_per_month))
+
+# number of NAs by column
+colSums(is.na(listings_v1)) %>%
+  sort(decreasing = TRUE)
+
+listings_v1 %>%
+  arrange(desc(reviews_per_month))
+```
+
+```{r}
+ggplot(listings_v1, aes(x=reviews_per_month)) +
+  geom_histogram(binwidth = 1) +
+  ggtitle("Histogram of listing popularity") +
+  xlab("reviews per month") +
+  theme_economist(14) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+## Categorical variables  
+
+```{r}
+ggplot(listings_v1, aes(x=is_superhost, fill = is_superhost)) +
+  geom_bar() +
+  xlab("") +
+  scale_x_discrete(labels = c("No", "Yes")) +
+  labs(title = "Superhosts") +
+  theme_grey(14) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+ggplot(listings_v1, aes(x=can_instant_book, fill=can_instant_book)) +
+  geom_bar() +
+  xlab("") +
+  scale_x_discrete(labels = c("No", "Yes")) +
+  labs(title = "Allow instant booking?") +
+  theme_grey(14) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+ggplot(listings_v1, aes(x=fct_infreq(room_type_category),fill=room_type_category)) +
+  geom_bar() +
+  xlab("room type") +
+  labs(title = "Most listings are entire home") +
+  scale_x_discrete(labels = c("entire home", "private room", "hotel room", "shared room")) +
+  theme_grey(14) +
+  scale_fill_brewer(palette = "Set3") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+listings_v1 <- listings_v1 %>%
+  mutate(min_nights1 = case_when(min_nights == 1 ~ "=1",
+                                 min_nights > 1 & min_nights <= 7 ~ "2~7",
+                                 min_nights > 7 ~ ">7"))
+ggplot(listings_v1, aes(x=fct_relevel(min_nights1, ">7", after = 2))) +
+  geom_bar() +
+  ggtitle("Minimum nights required for booking") +
+  xlab("Number of nights") +
+  theme_economist(14) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Numerical variables
+
+```{r}
+ggplot(listings_v1, aes(x=price)) +
+  geom_histogram(binwidth = 20) +
+  ggtitle("Most listings are below $200") +
+  xlab("price per night ($)") +
+  theme_economist(14) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+listings_v1$listing_name <- listings_v1$listing_name %>%
+  str_replace_all("/", " ") %>%
+  str_replace_all("[:punct:]", "") %>%
+  str_replace_all("[:digit:]", "") %>%
+  str_replace_all("  ", " ")
+
+listings_v1 <- listings_v1 %>%
+  mutate(len_name = lengths(str_split(str_trim(listing_name, side = "both"), " ")))
+
+ggplot(listings_v1, aes(x=len_name)) +
+  geom_histogram(binwidth = 1) +
+  labs(title = "Most listings have 6-7 words", caption = "Digits and punctuation removed") +
+  xlab("length of listing name") +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12,14)) +
+  theme_economist(14) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+
+```{r, message=FALSE}
+params <- read_csv("param.csv")
+params <- params %>%
+  select(-X1)
+```
+
+
+```{r}
+library(GGally)
+ggparcoord(params, columns = 2:7, groupColumn = "rmse",
+           scale = "uniminmax") +
+  scale_color_viridis_c() +
+  xlab("")
+```
+
+```{r}
+cv_result <- read_csv("cv_result 2.csv")
+ggparcoord(cv_result, columns=c(6:11,2,16),groupColumn = "mean_test_score",
+           scale = "uniminmax") +
+  scale_color_viridis_c() +
+  xlab("") +
+  theme(axis.text.x = element_text(angle = 70, hjust = 1))
+```
+
+
+
+
+
+
+
+
